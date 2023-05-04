@@ -1,0 +1,31 @@
+spring:
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      password:
+      jedis:
+        pool:
+          min-idle: 0
+          max-active: 5
+          max-idle: 5
+          max-wait: 1
+  datasource:
+    dynamic:
+      primary: master #设置默认的数据源或者数据源组,默认值即为master
+      strict: false #严格匹配数据源,默认false. true未匹配到指定数据源时抛异常,false使用默认数据源
+      datasource:
+        master:
+          url: jdbc:mysql://localhost:3306/qqRobot
+          username: root
+          password: 123456
+          driver-class-name: com.mysql.cj.jdbc.Driver # 3.2.0开始支持SPI可省略此配置
+mybatis-plus:
+  type-aliases-package: com.example.qqrobot.entity
+  mapper-locations: classpath:/mapper/**/*.xml
+info:
+  API_URL: https://api.openai.com/v1/engines/davinci-codex/completions
+  API_KEY: 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
+  connectTimeOut: 60000
+  connectionRequestTimeOut: 60000
+  socketTimeOut: 60000
